@@ -34,6 +34,7 @@ class MealDetailActivity : BaseActivity(), MealDetailContract.View {
         title = meal.title
         titleMealDetail.text = meal.title
         textMealDetailInstructions.text = meal.instructions
+        textMealDetailIngredients.text = meal.ingredientsLabel
     }
 
     companion object {

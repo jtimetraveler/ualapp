@@ -8,3 +8,9 @@ fun <T> io.reactivex.Observable<T>.subscribeOnAndroid(): Observable<T> {
     return this.subscribeOn(Schedulers.newThread())
         .observeOn(AndroidSchedulers.mainThread())
 }
+
+fun String?.notEmpty(): String? {
+    if (this.isNullOrBlank())
+        return null
+    return this
+}

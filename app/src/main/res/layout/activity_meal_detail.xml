@@ -25,15 +25,35 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/titleMealDetailIngredients"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/margin"
+                android:gravity="center"
+                android:text="@string/ingredients"
+                android:textSize="@dimen/text_regular"
+                android:textStyle="bold"
+                app:layout_constraintTop_toBottomOf="@id/titleMealDetail" />
+
+            <TextView
+                android:id="@+id/textMealDetailIngredients"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/text_regular"
+                app:layout_constraintEnd_toEndOf="@id/titleMealDetail"
+                app:layout_constraintStart_toStartOf="@id/titleMealDetail"
+                app:layout_constraintTop_toBottomOf="@id/titleMealDetailIngredients" />
+
+            <TextView
                 android:id="@+id/titleMealDetailInstructions"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="@dimen/margin"
                 android:gravity="center"
-                android:textSize="@dimen/text_regular"
                 android:text="@string/instructions"
+                android:textSize="@dimen/text_regular"
                 android:textStyle="bold"
-                app:layout_constraintTop_toBottomOf="@id/titleMealDetail" />
+                app:layout_constraintTop_toBottomOf="@id/textMealDetailIngredients" />
 
             <TextView
                 android:id="@+id/textMealDetailInstructions"
@@ -43,8 +63,8 @@
                 app:layout_constraintEnd_toEndOf="@id/titleMealDetail"
                 app:layout_constraintStart_toStartOf="@id/titleMealDetail"
                 app:layout_constraintTop_toBottomOf="@id/titleMealDetailInstructions" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

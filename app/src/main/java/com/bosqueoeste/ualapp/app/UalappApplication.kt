@@ -1,6 +1,7 @@
 package com.bosqueoeste.ualapp.app
 
 import android.app.Application
+import com.bosqueoeste.ualapp.dagger.DaggerAppComponent
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
@@ -13,6 +14,10 @@ class UalappApplication : Application(), HasAndroidInjector {
 
     override fun onCreate() {
         super.onCreate()
+        DaggerAppComponent.builder()
+            .application(this)
+            .build()
+            .inject(this)
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjection

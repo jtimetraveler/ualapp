@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import com.bosqueoeste.ualapp.R
 import com.bosqueoeste.ualapp.presentation.base.BaseActivity
-import com.bosqueoeste.ualapp.presentation.list.MealUseCase
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_meal_detail.*
 import javax.inject.Inject
 
 class MealDetailActivity : BaseActivity(), MealDetailContract.View {
@@ -20,10 +20,20 @@ class MealDetailActivity : BaseActivity(), MealDetailContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal_detail)
         presenter.view = this
+        intent.getStringExtra(MEAL_ID_KEY)?.let {
+            presenter.getMealById(it)
+        }
     }
 
-    override fun showMealDetail(meals: MealUseCase) {
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
 
+    override fun showMealDetail(meal: MealDetailUseCase) {
+        title = meal.title
+        titleMealDetail.text = meal.title
+        textMealDetailInstructions.text = meal.instructions
     }
 
     companion object {

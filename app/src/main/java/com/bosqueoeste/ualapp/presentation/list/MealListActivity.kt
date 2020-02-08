@@ -29,6 +29,11 @@ class MealListActivity : BaseActivity(), MealListContract.View {
         presenter.updateMealList()
     }
 
+    override fun onDestroy() {
+        presenter.onDestroy()
+        super.onDestroy()
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_meal_list, menu)
 

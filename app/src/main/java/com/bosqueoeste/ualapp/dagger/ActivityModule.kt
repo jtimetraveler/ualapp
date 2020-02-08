@@ -1,6 +1,6 @@
 package com.bosqueoeste.ualapp.dagger
 
-import com.bosqueoeste.ualapp.MainActivity
+import com.bosqueoeste.ualapp.presentation.list.MealListActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -8,5 +8,5 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityModule {
 
     @ContributesAndroidInjector
-    abstract fun bindMainActivity(): MainActivity
+    abstract fun bindMainActivity(): MealListActivity
 }

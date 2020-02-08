@@ -2,7 +2,7 @@ package com.bosqueoeste.ualapp.presentation.list
 
 import com.bosqueoeste.ualapp.data.models.Meal
 
-data class MealViewModel(
+data class MealUseCase(
     override val id: String?,
     override val title: String,
     override val category: String,

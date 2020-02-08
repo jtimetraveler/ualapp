@@ -1,11 +1,11 @@
 package com.bosqueoeste.ualapp.presentation.detail
 
 import com.bosqueoeste.ualapp.presentation.base.BaseContract
-import com.bosqueoeste.ualapp.presentation.list.MealViewModel
+import com.bosqueoeste.ualapp.presentation.list.MealUseCase
 
 interface MealDetailContract {
     interface View : BaseContract.View {
-        fun showMealDetail(meals: MealViewModel)
+        fun showMealDetail(meals: MealUseCase)
     }
 
     interface Presenter<View> : BaseContract.Presenter<View> {

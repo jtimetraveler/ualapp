@@ -13,7 +13,7 @@ class MealListPresenter @Inject constructor(api: UalappApi) :
         disposable.add(api.getMeals(searchQuery).subscribeOnAndroid()
             .map {
                 it.meals?.map {
-                    MealViewModel(
+                    MealUseCase(
                         it
                     )
                 }

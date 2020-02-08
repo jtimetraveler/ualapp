@@ -1,9 +1,10 @@
 package com.bosqueoeste.ualapp.presentation.list
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import androidx.appcompat.widget.SearchView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bosqueoeste.ualapp.R
 import com.bosqueoeste.ualapp.presentation.base.BaseActivity
 import dagger.android.AndroidInjection
@@ -15,11 +16,16 @@ class MealListActivity : BaseActivity(), MealListContract.View {
     @Inject
     lateinit var presenter: MealListContract.Presenter<MealListContract.View>
 
+    private lateinit var mealListAdapter: MealListAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal_list)
         setSupportActionBar(toolbarMealList)
+        setupViews()
+        presenter.view = this
+        presenter.updateMealList()
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -41,6 +47,18 @@ class MealListActivity : BaseActivity(), MealListContract.View {
         })
 
         return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun setupViews() {
+        mealListAdapter = MealListAdapter {}
+        recyclerMealList?.run {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = mealListAdapter
+        }
+    }
+
+    override fun showMeals(meals: List<ItemMeal>) {
+        mealListAdapter.refreshData(meals)
     }
 
 }

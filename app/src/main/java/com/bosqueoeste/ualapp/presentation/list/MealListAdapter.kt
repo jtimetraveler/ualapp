@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bosqueoeste.ualapp.R
+import com.bosqueoeste.ualapp.utils.loadUrl
 import kotlinx.android.synthetic.main.item_meal.view.*
 
 class MealListAdapter(
@@ -45,6 +46,11 @@ class MealListAdapter(
             itemView.run {
                 titleItemMeal.text = meal.title
                 categoryItemMeal.text = meal.category
+                meal.imageUrl?.let {
+                    imageItemMeal.loadUrl(it, R.drawable.ic_image)
+                } ?: kotlin.run {
+                    imageItemMeal.setImageDrawable(resources.getDrawable(R.drawable.ic_image))
+                }
             }
         }
     }

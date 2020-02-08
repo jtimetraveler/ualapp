@@ -5,32 +5,43 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/imageItemMeal"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardImageItemMeal"
         android:layout_width="@dimen/image_item_size"
         android:layout_height="@dimen/image_item_size"
         android:layout_margin="@dimen/margin"
+        app:cardCornerRadius="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageItemMeal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+
 
     <TextView
         android:id="@+id/titleItemMeal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
         android:layout_marginEnd="@dimen/margin"
         android:textSize="19sp"
+        app:layout_constraintBottom_toTopOf="@id/categoryItemMeal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/imageItemMeal"
-        app:layout_constraintTop_toTopOf="@id/imageItemMeal"
+        app:layout_constraintStart_toEndOf="@id/cardImageItemMeal"
+        app:layout_constraintTop_toTopOf="@id/cardImageItemMeal"
+        app:layout_constraintVertical_chainStyle="spread_inside"
         tools:text="Title" />
 
     <TextView
         android:id="@+id/categoryItemMeal"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin"
         android:textSize="17sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@id/cardImageItemMeal"
         app:layout_constraintEnd_toEndOf="@id/titleItemMeal"
         app:layout_constraintStart_toStartOf="@id/titleItemMeal"
         app:layout_constraintTop_toBottomOf="@id/titleItemMeal"

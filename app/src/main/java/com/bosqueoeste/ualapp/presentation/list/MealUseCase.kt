@@ -7,7 +7,7 @@ data class MealUseCase(
     override val title: String,
     override val category: String,
     override val imageUrl: String?
-) : ItemMeal {
+) : ItemMeal, RandomMeal {
     constructor(meal: Meal) : this(
         id = meal.idMeal,
         title = meal.strMeal.orEmpty(),

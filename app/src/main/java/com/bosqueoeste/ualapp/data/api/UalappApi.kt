@@ -16,4 +16,7 @@ interface UalappApi {
     fun getMealById(
         @Query("i") id: String = ""
     ): Observable<MealListResponse>
+
+    @GET("random.php")
+    fun getRandomMeal(): Observable<MealListResponse>
 }

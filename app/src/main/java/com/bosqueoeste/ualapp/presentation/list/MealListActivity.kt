@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bosqueoeste.ualapp.R
 import com.bosqueoeste.ualapp.presentation.base.BaseActivity
 import com.bosqueoeste.ualapp.presentation.detail.MealDetailActivity
+import com.bosqueoeste.ualapp.utils.loadUrl
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_meal_list.*
 import javax.inject.Inject
@@ -27,6 +28,7 @@ class MealListActivity : BaseActivity(), MealListContract.View {
         setupViews()
         presenter.view = this
         presenter.updateMealList()
+        presenter.updateRandomMeal()
     }
 
     override fun onDestroy() {
@@ -71,5 +73,11 @@ class MealListActivity : BaseActivity(), MealListContract.View {
 
     override fun goToMealDetail(mealId: String) {
         startActivity(MealDetailActivity.getIntent(this, mealId))
+    }
+
+    override fun showRandomMeal(meal: RandomMeal) {
+        meal.imageUrl?.let {
+            imageMealListBanner.loadUrl(it)
+        }
     }
 }

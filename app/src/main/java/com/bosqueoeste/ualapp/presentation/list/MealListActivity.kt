@@ -5,6 +5,7 @@ import android.os.Bundle
 import com.bosqueoeste.ualapp.R
 import com.bosqueoeste.ualapp.presentation.base.BaseActivity
 import dagger.android.AndroidInjection
+import kotlinx.android.synthetic.main.activity_meal_list.*
 import javax.inject.Inject
 
 class MealListActivity : BaseActivity(), MealListContract.View {
@@ -16,6 +17,7 @@ class MealListActivity : BaseActivity(), MealListContract.View {
         AndroidInjection.inject(this)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_meal_list)
+        setSupportActionBar(toolbarMealList)
         presenter.updateMealList()
     }
 }

@@ -22,4 +22,10 @@ class MealListPresenter @Inject constructor(api: UalappApi) :
             }, { view?.showMeals(emptyList()) })
         )
     }
+
+    override fun selectMealItem(itemMeal: ItemMeal) {
+        itemMeal.id?.let {
+            view?.goToMealDetail(it)
+        }
+    }
 }

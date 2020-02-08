@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bosqueoeste.ualapp.R
 import com.bosqueoeste.ualapp.presentation.base.BaseActivity
+import com.bosqueoeste.ualapp.presentation.detail.MealDetailActivity
 import dagger.android.AndroidInjection
 import kotlinx.android.synthetic.main.activity_meal_list.*
 import javax.inject.Inject
@@ -34,7 +35,7 @@ class MealListActivity : BaseActivity(), MealListContract.View {
         val searchItem = menu?.findItem(R.id.action_search)
         val searchView = searchItem?.actionView as SearchView
 
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 searchItem.collapseActionView()
                 return true
@@ -50,7 +51,9 @@ class MealListActivity : BaseActivity(), MealListContract.View {
     }
 
     private fun setupViews() {
-        mealListAdapter = MealListAdapter {}
+        mealListAdapter = MealListAdapter {
+            presenter.selectMealItem(it)
+        }
         recyclerMealList?.run {
             layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
             adapter = mealListAdapter
@@ -61,4 +64,7 @@ class MealListActivity : BaseActivity(), MealListContract.View {
         mealListAdapter.refreshData(meals)
     }
 
+    override fun goToMealDetail(mealId: String) {
+        startActivity(MealDetailActivity.getIntent(this, mealId))
+    }
 }

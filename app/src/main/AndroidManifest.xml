@@ -25,7 +25,8 @@
         <activity
             android:name=".presentation.detail.MealDetailActivity"
             android:parentActivityName=".presentation.list.MealListActivity"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>

@@ -12,7 +12,7 @@ class MealListPresenter @Inject constructor(api: UalappApi) :
 
     override fun updateMealList(searchQuery:String) {
         disposable.add(api.getMeals(searchQuery).subscribeOnAndroid().subscribe({
-            Log.d("API", it.meals.joinToString())
+            Log.d("API", it.meals?.joinToString())
         }, { Log.e("API", it.message) }))
     }
 }
